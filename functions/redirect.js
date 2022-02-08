@@ -14,7 +14,7 @@ exports.handler = async event => {
       headers: {
         'cache-control': 'public, max-age=0, must-revalidate',
         // location: 'http://netlify.asargsyan.ru/' + decodeURIComponent(event.queryStringParameters.url).split('/')[3] + '/'
-        location: 'http://netlify.asargsyan.ru?event=' + event
+        location: 'http://netlify.asargsyan.ru?event=' + JSON.stringify(event)
       }
     }
   }
