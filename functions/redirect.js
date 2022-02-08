@@ -1,3 +1,12 @@
+export async function getServerSideProps() {
+  // Fetch data from external API
+  const res = await fetch('http://netlify.asargsyan.ru/2022/02/08/test-1/?url=2022%2F02%2F08%2Ftest-1%2F')
+  const data = await res.json()
+
+  // Pass data to the page via props
+  return { props: { data } }
+}
+
 exports.handler = async event => {
   if (event.queryStringParameters.fbclid) {
     return {
@@ -8,7 +17,7 @@ exports.handler = async event => {
       }
     }
   } else {
-    console.log('event', event)
+    console.log('event', getServerSideProps())
     return {
       statusCode: 301,
       headers: {
