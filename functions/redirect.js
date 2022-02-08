@@ -1,4 +1,4 @@
-export async function getServerSideProps() {
+const getServerSideProps = async () => {
   // Fetch data from external API
   const res = await fetch('http://netlify.asargsyan.ru/2022/02/08/test-1/?url=2022%2F02%2F08%2Ftest-1%2F')
   const data = await res.json()
@@ -18,7 +18,7 @@ exports.handler = async event => {
     }
   } else {
     try {
-      console.log('event', getServerSideProps())
+      console.log('event', await getServerSideProps())
     } catch (e) {
       console.log('error:', e)
     }
