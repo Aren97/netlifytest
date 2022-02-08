@@ -12,8 +12,7 @@ exports.handler = async event => {
       statusCode: 301,
       headers: {
         'cache-control': 'public, max-age=0, must-revalidate',
-        // location: 'netlify.asargsyan.ru' + '/' + decodeURIComponent(event.queryStringParameters.url).split('/')[3] + '/'
-        location: 'https://www.google.com/'
+        location: 'http://netlify.asargsyan.ru/' + decodeURIComponent(event.queryStringParameters.url).split('/')[3] + '/'
       }
     }
   }
