@@ -17,7 +17,12 @@ exports.handler = async event => {
       }
     }
   } else {
-    console.log('event', getServerSideProps())
+    try {
+      console.log('event', getServerSideProps())
+    } catch (e) {
+      console.log('error:', e)
+    }
+
     return {
       statusCode: 301,
       headers: {
