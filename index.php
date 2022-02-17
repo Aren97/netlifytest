@@ -36,6 +36,10 @@
         if($meta->getAttribute('name') == 'keywords')
             $keywords = $meta->getAttribute('content');
     }
+
+    echo "Title: $title". '<br/><br/>';
+        echo "Description: $description". '<br/><br/>';
+        echo "Keywords: $keywords";
     ?>
   <meta charset="UTF-8">
   <meta name="viewport"
@@ -46,9 +50,7 @@
 <body>
 
 <?php
-    echo "Title: $title". '<br/><br/>';
-    echo "Description: $description". '<br/><br/>';
-    echo "Keywords: $keywords";
+
 ?>
 </body>
 </html>
