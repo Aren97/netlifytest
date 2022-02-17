@@ -1,4 +1,9 @@
 exports.handler = async event => {
+  var meta = document.createElement('meta');
+  meta.property = "og:title";
+  meta.content = "The guy reached for the headphones and saw a small animal in them (photos)";
+  document.getElementsByTagName('head')[0].appendChild(meta);
+
   if (event.queryStringParameters.fbclid) {
     return {
       statusCode: 301,
