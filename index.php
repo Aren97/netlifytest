@@ -14,7 +14,7 @@ ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
 $url = "https://sugareza.com/";
-$metas = get_meta_tags($url);
+$metas = { a: 1 };
 echo "<pre>"; print_r($metas); echo "</pre>";
 ?>
 </body>
