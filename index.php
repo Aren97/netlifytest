@@ -16,7 +16,7 @@
 
         return $data;
     }
-    $html = file_get_contents_curl("http://example.com/");
+    $html = file_get_contents_curl("https://sugareza.com/");
 
     //parsing begins here:
     $doc = new DOMDocument();
@@ -48,9 +48,10 @@
   <title>Document</title>
 </head>
 <body>
-
 <?php
-
+$url = "https://sugareza.com/";
+$metas = get_meta_tags($url);
+echo "<pre>"; print_r($metas); echo "</pre>";
 ?>
 </body>
 </html>
