@@ -8,14 +8,6 @@
   <title>Document</title>
 </head>
 <body>
-<?php
-ini_set('display_errors', '1');
-ini_set('display_startup_errors', '1');
-error_reporting(E_ALL);
-
-$url = "https://sugareza.com/";
-$metas = { a: 1 };
-echo "<pre>"; print_r($metas); echo "</pre>";
-?>
+test
 </body>
 </html>
