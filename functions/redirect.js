@@ -1,5 +1,6 @@
+const axios = require('axios');
+
 exports.handler = async event => {
-  var afterLoad = require('after-load');
   // var meta = document.createElement('meta');
   // meta.property = "og:title";
   // meta.content = "The guy reached for the headphones and saw a small animal in them (photos)";
@@ -14,17 +15,34 @@ exports.handler = async event => {
       }
     }
   } else {
-    afterLoad(decodeURIComponent(event.queryStringParameters.url), (html) => {
-      return {
-        statusCode: 200,
-        headers: {
-          'cache-control': 'no-cache',
-          'content-type': 'text/html; charset=utf-8'
-          // location: 'http://netlify.asargsyan.ru/' + decodeURIComponent(event.queryStringParameters.url).split('/')[3] + '/'
-          // location: 'http://netlify.asargsyan.ru?event=' + JSON.stringify(getServerAttr)
-        },
-        body: html
-      }
+    return axios({
+      method: "get",
+      url: event.queryStringParameters.url,
     })
+      .then((response) => {
+        console.log("data", response.data);
+        return {
+          statusCode: 200,
+          body: JSON.stringify(response.data),
+        };
+      })
+      .catch((error) => {
+        console.log(error);
+        return {
+          statusCode: 500,
+          body: JSON.stringify(error.message),
+        };
+      });
+
+    // return {
+    //   statusCode: 200,
+    //   headers: {
+    //     'cache-control': 'no-cache',
+    //     'content-type': 'text/html; charset=utf-8'
+    //     // location: 'http://netlify.asargsyan.ru/' + decodeURIComponent(event.queryStringParameters.url).split('/')[3] + '/'
+    //     // location: 'http://netlify.asargsyan.ru?event=' + JSON.stringify(getServerAttr)
+    //   },
+    //   body: html
+    // }
   }
 }

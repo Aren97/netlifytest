@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/Aren97/netlifytest#readme",
   "dependencies": {
-    "after-load": "^1.0.4"
+    "axios": "^0.27.2"
   }
 }
