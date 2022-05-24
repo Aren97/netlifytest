@@ -14,9 +14,10 @@ exports.handler = async event => {
     }
   } else {
     return {
-      statusCode: 301,
+      statusCode: 200,
       headers: {
-        'cache-control': 'public, max-age=0, must-revalidate',
+        'cache-control': 'no-cache',
+        'content-type': 'text/html; charset=utf-8'
         // location: 'http://netlify.asargsyan.ru/' + decodeURIComponent(event.queryStringParameters.url).split('/')[3] + '/'
         // location: 'http://netlify.asargsyan.ru?event=' + JSON.stringify(getServerAttr)
       },
