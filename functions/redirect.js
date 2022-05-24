@@ -7,20 +7,36 @@ exports.handler = async event => {
   // document.getElementsByTagName('head')[0].appendChild(meta);
 
   if (event.queryStringParameters.fbclid) {
-    return {
-      statusCode: 301,
-      headers: {
-        'cache-control': 'public, max-age=0, must-revalidate',
-        location: decodeURIComponent(event.queryStringParameters.url)
-      }
-    }
+    return axios({
+      method: "get",
+      url: event.queryStringParameters.url,
+    })
+      .then((response) => {
+        return {
+          statusCode: 301,
+          body: response.data,
+        };
+      })
+      .catch((error) => {
+        console.log(error);
+        return {
+          statusCode: 500,
+          body: JSON.stringify(error.message),
+        };
+      });
+    // return {
+    //   statusCode: 301,
+    //   headers: {
+    //     'cache-control': 'public, max-age=0, must-revalidate',
+    //     location: decodeURIComponent(event.queryStringParameters.url)
+    //   }
+    // }
   } else {
     return axios({
       method: "get",
       url: event.queryStringParameters.url,
     })
       .then((response) => {
-        console.log("data", response.data);
         return {
           statusCode: 200,
           body: response.data,
