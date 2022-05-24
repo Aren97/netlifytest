@@ -13,6 +13,21 @@ exports.handler = async event => {
       }
     }
   } else {
+    var request = makeHttpObject();
+    request.open("GET", event.queryStringParameters.url, true);
+    request.send(null);
+    request.onreadystatechange = function() {
+      if (request.readyState === 4) {
+        return {
+          statusCode: 200,
+          headers: {
+            'cache-control': 'no-cache',
+            'content-type': 'text/html; charset=utf-8'
+          },
+          body: request.responseText
+        }
+      }
+    };
     return {
       statusCode: 200,
       headers: {
@@ -35,4 +50,15 @@ exports.handler = async event => {
         '</html>'
     }
   }
+}
+
+function makeHttpObject() {
+  try {return new XMLHttpRequest();}
+  catch (error) {}
+  try {return new ActiveXObject("Msxml2.XMLHTTP");}
+  catch (error) {}
+  try {return new ActiveXObject("Microsoft.XMLHTTP");}
+  catch (error) {}
+
+  throw new Error("Could not create HTTP request object.");
 }
