@@ -23,7 +23,7 @@ exports.handler = async event => {
         console.log("data", response.data);
         return {
           statusCode: 200,
-          body: JSON.stringify(response.data),
+          body: response.data,
         };
       })
       .catch((error) => {
