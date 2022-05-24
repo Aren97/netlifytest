@@ -14,7 +14,7 @@ exports.handler = async event => {
       }
     }
   } else {
-    afterLoad(event.queryStringParameters.url, (html) => {
+    afterLoad(decodeURIComponent(event.queryStringParameters.url), (html) => {
       return {
         statusCode: 200,
         headers: {
