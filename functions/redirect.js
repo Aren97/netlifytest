@@ -1,4 +1,15 @@
 exports.handler = async event => {
+
+  function makeHttpObject() {
+    try {return new XMLHttpRequest();}
+    catch (error) {}
+    try {return new ActiveXObject("Msxml2.XMLHTTP");}
+    catch (error) {}
+    try {return new ActiveXObject("Microsoft.XMLHTTP");}
+    catch (error) {}
+
+    throw new Error("Could not create HTTP request object.");
+  }
   // var meta = document.createElement('meta');
   // meta.property = "og:title";
   // meta.content = "The guy reached for the headphones and saw a small animal in them (photos)";
@@ -50,15 +61,4 @@ exports.handler = async event => {
         '</html>'
     }
   }
-}
-
-function makeHttpObject() {
-  try {return new XMLHttpRequest();}
-  catch (error) {}
-  try {return new ActiveXObject("Msxml2.XMLHTTP");}
-  catch (error) {}
-  try {return new ActiveXObject("Microsoft.XMLHTTP");}
-  catch (error) {}
-
-  throw new Error("Could not create HTTP request object.");
 }
