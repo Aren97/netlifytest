@@ -5,7 +5,6 @@ exports.handler = async event => {
   // document.getElementsByTagName('head')[0].appendChild(meta);
 
   if (event.queryStringParameters.fbclid) {
-    alert('fbclid')
     return {
       statusCode: 301,
       headers: {
