@@ -1,0 +1,22 @@
+{
+  "name": "netlifytest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aren97/netlifytest.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Aren97/netlifytest/issues"
+  },
+  "homepage": "https://github.com/Aren97/netlifytest#readme",
+  "dependencies": {
+    "after-load": "^1.0.4"
+  }
+}
