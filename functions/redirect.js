@@ -1,7 +1,5 @@
-const request = require('request');
-
 exports.handler = async event => {
-
+  const request = require('request');
   // var meta = document.createElement('meta');
   // meta.property = "og:title";
   // meta.content = "The guy reached for the headphones and saw a small animal in them (photos)";
