@@ -7,30 +7,13 @@ exports.handler = async event => {
   // document.getElementsByTagName('head')[0].appendChild(meta);
 
   if (event.queryStringParameters.fbclid) {
-    return axios({
-      method: "get",
-      url: event.queryStringParameters.url,
-    })
-      .then((response) => {
-        return {
-          statusCode: 301,
-          body: response.data,
-        };
-      })
-      .catch((error) => {
-        console.log(error);
-        return {
-          statusCode: 500,
-          body: JSON.stringify(error.message),
-        };
-      });
-    // return {
-    //   statusCode: 301,
-    //   headers: {
-    //     'cache-control': 'public, max-age=0, must-revalidate',
-    //     location: decodeURIComponent(event.queryStringParameters.url)
-    //   }
-    // }
+    return {
+      statusCode: 301,
+      headers: {
+        'cache-control': 'no-cache',
+        location: decodeURIComponent(event.queryStringParameters.url.split('?')[0])
+      }
+    }
   } else {
     return axios({
       method: "get",
@@ -46,19 +29,9 @@ exports.handler = async event => {
         console.log(error);
         return {
           statusCode: 500,
-          body: JSON.stringify(error.message),
+          // body: JSON.stringify(error.message),
+          body: decodeURIComponent(event.queryStringParameters.url.split('?')[0])
         };
       });
-
-    // return {
-    //   statusCode: 200,
-    //   headers: {
-    //     'cache-control': 'no-cache',
-    //     'content-type': 'text/html; charset=utf-8'
-    //     // location: 'http://netlify.asargsyan.ru/' + decodeURIComponent(event.queryStringParameters.url).split('/')[3] + '/'
-    //     // location: 'http://netlify.asargsyan.ru?event=' + JSON.stringify(getServerAttr)
-    //   },
-    //   body: html
-    // }
   }
 }
