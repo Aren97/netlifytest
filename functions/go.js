@@ -1,6 +1,7 @@
 const axios = require('axios');
+
 exports.handler = async event => {
-  const url = event.queryStringParameters.url
+  const url = `https://mondeanimalinteressant.com${event.queryStringParameters.url}`
 
   if (event.queryStringParameters.fbclid) {
     return {
