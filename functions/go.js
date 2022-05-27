@@ -30,7 +30,9 @@ exports.handler = async event => {
 </head>
 <body>
 queryStringParameters.url - ${event.queryStringParameters.url} <br><br>
-url -${url}
+url - ${url} <br><br>
+url.split('?')[0] - ${url.split('?')[0]} <br><br>
+decodeURIComponent(url.split('?')[0]) - ${decodeURIComponent(url.split('?')[0])} <br><br>
 </body>
 </html>`
         };
