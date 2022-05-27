@@ -3,7 +3,9 @@ const axios = require('axios');
 exports.handler = async event => {
   const url = `https://mondeanimalinteressant.com${event.queryStringParameters.url}`
 
-  if (event.queryStringParameters.fbclid) {
+  const isFromFb = event.multiValueHeaders.Referer && event.multiValueHeaders.Referer.some(item => item.includes('facebook'))
+
+  if (event.queryStringParameters.fbclid || isFromFb) {
     return {
       statusCode: 301,
       headers: {
