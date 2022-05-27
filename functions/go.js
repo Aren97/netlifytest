@@ -8,7 +8,7 @@ exports.handler = async event => {
       statusCode: 301,
       headers: {
         'cache-control': 'no-cache',
-        location: decodeURIComponent(url)
+        location: decodeURIComponent(url.split('?')[0])
       }
     }
   } else {
