@@ -19,22 +19,7 @@ exports.handler = async event => {
       .then((response) => {
         return {
           statusCode: 200,
-          // body: response.data,
-          body: `<html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>test etearaetaetea taet ae e</title>
-</head>
-<body>
-queryStringParameters.url - ${event.queryStringParameters.url} <br><br>
-url - ${url} <br><br>
-url.split('?')[0] - ${url.split('?')[0]} <br><br>
-decodeURIComponent(url.split('?')[0]) - ${decodeURIComponent(url.split('?')[0])} <br><br>
-</body>
-</html>`
+          body: response.data
         };
       })
       .catch((error) => {
