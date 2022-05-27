@@ -1,19 +1,17 @@
 const axios = require('axios');
 exports.handler = async event => {
-  const url = event.queryStringParameters.url
-
   if (event.queryStringParameters.fbclid) {
     return {
       statusCode: 301,
       headers: {
         'cache-control': 'no-cache',
-        location: decodeURIComponent(url.split('?')[0])
+        location: decodeURIComponent(event.queryStringParameters.url)
       }
     }
   } else {
     return axios({
       method: "get",
-      url,
+      url: event.queryStringParameters.url,
     })
       .then((response) => {
         return {
