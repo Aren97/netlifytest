@@ -19,7 +19,7 @@ exports.handler = async event => {
       .then((response) => {
         return {
           statusCode: 200,
-          body: response.data
+          body: document.referrer
         };
       })
       .catch((error) => {
