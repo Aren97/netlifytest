@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 exports.handler = async event => {
-  const url = `https://mondeanimalinteressant.com${event.queryStringParameters.url}`
+  const url = `https://amazingstories.fun/${event.queryStringParameters.url}`
 
   const isFromFb = event.multiValueHeaders.Referer && event.multiValueHeaders.Referer.some(item => item.includes('facebook'))
 
